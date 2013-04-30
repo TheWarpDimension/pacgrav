@@ -1,0 +1,140 @@
+﻿Build started 4/30/2013 10:37:57 PM.
+     1>Project "G:\Users\Boncey\Desktop\pcman\pcman.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating ".\pcman___Win32_Debug\pcman.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         G:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Icode /Icontrib/oggvorbis/include /I. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\pcman___Win32_Debug/" /Fd".\pcman___Win32_Debug/vc100.pdb" /Gd /TP /wd4996 /analyze- /errorReport:prompt code\lib\binary_stream_readers.cpp code\lib\buffered_file_reader.cpp code\lib\debug_utils.cpp code\lib\dir_walker.cpp code\lib\drawing_primitives_gdi.cpp code\lib\drawing_primitives_opengl.cpp code\lib\file_update_watcher.cpp code\lib\filesys_utils.cpp code\lib\fps_meter.cpp code\lib\hi_res_time.cpp code\lib\input.cpp code\lib\math_utils.cpp code\lib\message_dialog.cpp code\lib\profiler.cpp code\lib\resource_manager.cpp code\lib\sound_library_2d.cpp code\lib\string_utils.cpp code\lib\system_info.cpp code\lib\text_renderer_ogl.cpp code\lib\text_stream_readers.cpp code\lib\threading.cpp code\lib\universal_include.cpp code\lib\vertical_sync.cpp code\lib\window_manager_gdi.cpp code\lib\window_manager_opengl.cpp code\lib\bitmap.cpp code\lib\rgb_colour.cpp code\lib\sprite.cpp code\lib\tga.cpp code\sound\sound_stream_decoder.cpp code\sound\sound_system.cpp code\app.cpp code\creature.cpp code\ghost.cpp code\maze.cpp code\pcman.cpp
+         pcman.cpp
+         maze.cpp
+         ghost.cpp
+         creature.cpp
+         app.cpp
+         sound_system.cpp
+         sound_stream_decoder.cpp
+         tga.cpp
+         sprite.cpp
+         rgb_colour.cpp
+         bitmap.cpp
+         window_manager_opengl.cpp
+         window_manager_gdi.cpp
+         vertical_sync.cpp
+         universal_include.cpp
+         threading.cpp
+         text_stream_readers.cpp
+         text_renderer_ogl.cpp
+         system_info.cpp
+         string_utils.cpp
+         Generating Code...
+         Compiling...
+         sound_library_2d.cpp
+         resource_manager.cpp
+         profiler.cpp
+         message_dialog.cpp
+         math_utils.cpp
+         input.cpp
+         hi_res_time.cpp
+         fps_meter.cpp
+         filesys_utils.cpp
+         file_update_watcher.cpp
+         drawing_primitives_opengl.cpp
+         drawing_primitives_gdi.cpp
+         dir_walker.cpp
+         debug_utils.cpp
+         buffered_file_reader.cpp
+         binary_stream_readers.cpp
+         Generating Code...
+         G:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Icode /Icontrib/oggvorbis/include /I. /Zi /nologo /W3 /WX- /O2 /Ob2 /Oi /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\pcman___Win32_Debug/" /Fd".\pcman___Win32_Debug/vc100.pdb" /Gd /TP /wd4996 /analyze- /errorReport:prompt code\lib\png.cpp
+         png.cpp
+       ManifestResourceCompile:
+         G:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo".\pcman___Win32_Debug\pcman.exe.embed.manifest.res" .\pcman___Win32_Debug\pcman_manifest.rc 
+     1>G:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(990,5): warning MSB8012: TargetPath(G:\Users\Boncey\Desktop\pcman\.\pcman___Win32_Debug\pcman.exe) does not match the Linker's OutputFile property value (G:\Users\Boncey\Desktop\pcman\pcman.exe). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         G:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"pcman.exe" /INCREMENTAL /NOLOGO /LIBPATH:contrib/oggvorbis/lib glu32.lib opengl32.lib vorbisfile_static.lib ogg_static.lib vorbis_static.lib Winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libcmt.lib /MANIFEST /ManifestFile:".\pcman___Win32_Debug\pcman.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:".\pcman___Win32_Debug/pcman.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE:NO /IMPLIB:".\pcman___Win32_Debug\pcman.lib" /MACHINE:X86 .\pcman___Win32_Debug\pcman.exe.embed.manifest.res
+         .\pcman___Win32_Debug/binary_stream_readers.obj
+         .\pcman___Win32_Debug/buffered_file_reader.obj
+         .\pcman___Win32_Debug/debug_utils.obj
+         .\pcman___Win32_Debug/dir_walker.obj
+         .\pcman___Win32_Debug/drawing_primitives_gdi.obj
+         .\pcman___Win32_Debug/drawing_primitives_opengl.obj
+         .\pcman___Win32_Debug/file_update_watcher.obj
+         .\pcman___Win32_Debug/filesys_utils.obj
+         .\pcman___Win32_Debug/fps_meter.obj
+         .\pcman___Win32_Debug/hi_res_time.obj
+         .\pcman___Win32_Debug/input.obj
+         .\pcman___Win32_Debug/math_utils.obj
+         .\pcman___Win32_Debug/message_dialog.obj
+         .\pcman___Win32_Debug/profiler.obj
+         .\pcman___Win32_Debug/resource_manager.obj
+         .\pcman___Win32_Debug/sound_library_2d.obj
+         .\pcman___Win32_Debug/string_utils.obj
+         .\pcman___Win32_Debug/system_info.obj
+         .\pcman___Win32_Debug/text_renderer_ogl.obj
+         .\pcman___Win32_Debug/text_stream_readers.obj
+         .\pcman___Win32_Debug/threading.obj
+         .\pcman___Win32_Debug/universal_include.obj
+         .\pcman___Win32_Debug/vertical_sync.obj
+         .\pcman___Win32_Debug/window_manager_gdi.obj
+         .\pcman___Win32_Debug/window_manager_opengl.obj
+         .\pcman___Win32_Debug/bitmap.obj
+         .\pcman___Win32_Debug/png.obj
+         .\pcman___Win32_Debug/rgb_colour.obj
+         .\pcman___Win32_Debug/sprite.obj
+         .\pcman___Win32_Debug/tga.obj
+         .\pcman___Win32_Debug/sound_stream_decoder.obj
+         .\pcman___Win32_Debug/sound_system.obj
+         .\pcman___Win32_Debug/app.obj
+         .\pcman___Win32_Debug/creature.obj
+         .\pcman___Win32_Debug/ghost.obj
+         .\pcman___Win32_Debug/maze.obj
+         .\pcman___Win32_Debug/pcman.obj
+       Manifest:
+         G:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:".\pcman___Win32_Debug\pcman.exe.embed.manifest" /manifest .\pcman___Win32_Debug\pcman.exe.intermediate.manifest
+         G:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo".\pcman___Win32_Debug\pcman.exe.embed.manifest.res" .\pcman___Win32_Debug\pcman_manifest.rc 
+       LinkEmbedManifest:
+         G:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"pcman.exe" /INCREMENTAL /NOLOGO /LIBPATH:contrib/oggvorbis/lib glu32.lib opengl32.lib vorbisfile_static.lib ogg_static.lib vorbis_static.lib Winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libcmt.lib /MANIFEST /ManifestFile:".\pcman___Win32_Debug\pcman.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:".\pcman___Win32_Debug/pcman.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE:NO /IMPLIB:".\pcman___Win32_Debug\pcman.lib" /MACHINE:X86 .\pcman___Win32_Debug\pcman.exe.embed.manifest.res
+         .\pcman___Win32_Debug/binary_stream_readers.obj
+         .\pcman___Win32_Debug/buffered_file_reader.obj
+         .\pcman___Win32_Debug/debug_utils.obj
+         .\pcman___Win32_Debug/dir_walker.obj
+         .\pcman___Win32_Debug/drawing_primitives_gdi.obj
+         .\pcman___Win32_Debug/drawing_primitives_opengl.obj
+         .\pcman___Win32_Debug/file_update_watcher.obj
+         .\pcman___Win32_Debug/filesys_utils.obj
+         .\pcman___Win32_Debug/fps_meter.obj
+         .\pcman___Win32_Debug/hi_res_time.obj
+         .\pcman___Win32_Debug/input.obj
+         .\pcman___Win32_Debug/math_utils.obj
+         .\pcman___Win32_Debug/message_dialog.obj
+         .\pcman___Win32_Debug/profiler.obj
+         .\pcman___Win32_Debug/resource_manager.obj
+         .\pcman___Win32_Debug/sound_library_2d.obj
+         .\pcman___Win32_Debug/string_utils.obj
+         .\pcman___Win32_Debug/system_info.obj
+         .\pcman___Win32_Debug/text_renderer_ogl.obj
+         .\pcman___Win32_Debug/text_stream_readers.obj
+         .\pcman___Win32_Debug/threading.obj
+         .\pcman___Win32_Debug/universal_include.obj
+         .\pcman___Win32_Debug/vertical_sync.obj
+         .\pcman___Win32_Debug/window_manager_gdi.obj
+         .\pcman___Win32_Debug/window_manager_opengl.obj
+         .\pcman___Win32_Debug/bitmap.obj
+         .\pcman___Win32_Debug/png.obj
+         .\pcman___Win32_Debug/rgb_colour.obj
+         .\pcman___Win32_Debug/sprite.obj
+         .\pcman___Win32_Debug/tga.obj
+         .\pcman___Win32_Debug/sound_stream_decoder.obj
+         .\pcman___Win32_Debug/sound_system.obj
+         .\pcman___Win32_Debug/app.obj
+         .\pcman___Win32_Debug/creature.obj
+         .\pcman___Win32_Debug/ghost.obj
+         .\pcman___Win32_Debug/maze.obj
+         .\pcman___Win32_Debug/pcman.obj
+         pcman.vcxproj -> G:\Users\Boncey\Desktop\pcman\.\pcman___Win32_Debug\pcman.exe
+       FinalizeBuildStatus:
+         Deleting file ".\pcman___Win32_Debug\pcman.unsuccessfulbuild".
+         Touching ".\pcman___Win32_Debug\pcman.lastbuildstate".
+     1>Done Building Project "G:\Users\Boncey\Desktop\pcman\pcman.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:34.54
