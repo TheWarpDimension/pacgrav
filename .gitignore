@@ -34,3 +34,11 @@ $RECYCLE.BIN/
 *.sdf
 *.suo
 *.vcxproj.user
+*.opensdf
+*.log
+*.pdb
+*.lastbuildstate
+*.res
+*.manifest
+*.idb
+*.rc
