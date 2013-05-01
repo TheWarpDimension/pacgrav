@@ -110,7 +110,7 @@ void Sprite::Render(int x, int y, Mode mode, int w, int h)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_ONE_MINUS_SRC_ALPHA, GL_SRC_ALPHA);
  	glBindTexture(GL_TEXTURE_2D, m_textureId);
-	glBegin(GL_QUADS);
+	glBegin(GL_POLYGON);
     // (u1,v1)
 	//    +-----+
 	//    |     |
