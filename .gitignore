@@ -42,3 +42,4 @@ $RECYCLE.BIN/
 *.manifest
 *.idb
 *.rc
+*.vcxproj.user
