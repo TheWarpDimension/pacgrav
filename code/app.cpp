@@ -195,7 +195,7 @@ void App::MainLoop()
 		else
 		{
 			g_gameOverSprite.Render(0, 0, Sprite::ModeNormal, 760, 690);
-           // g_soundSystem.PlayOnce("01_SultansOfSwing.ogg");
+		//	g_soundSystem.PlayOnce("sounds/GameOverYeah.ogg");
 		}
         
         g_soundSystem.Advance();
