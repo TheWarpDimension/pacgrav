@@ -43,3 +43,4 @@ $RECYCLE.BIN/
 *.idb
 *.rc
 *.vcxproj.user
+*.cache
