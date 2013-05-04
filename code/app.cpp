@@ -37,6 +37,8 @@ double      g_powerPillEndTime = 0.0;
 double      g_scatterEndTime = 0.0;
 Ghost		g_ghosts[numGhosts];
 bool		g_debugMode = false;
+bool		g_godMode = false;
+bool		g_slowmo = false;
 
 
 App::App()
@@ -72,12 +74,19 @@ void App::MainLoop()
 		double timeDelta = timeNow - lastTime;
         if (timeDelta > 0.2)
             timeDelta = 0.2;
-		if (g_keys[KEY_F5])
-			timeDelta *= 0.1;
 		lastTime = timeNow;
 
 		if (g_keyDowns[KEY_F4])
 			g_debugMode = !g_debugMode;
+
+		if (g_keyDowns[KEY_F3])
+			g_godMode = !g_godMode;
+
+		if (g_keyDowns[KEY_F5])
+			g_slowmo = !g_slowmo;
+
+		if (g_slowmo != 0)
+			timeDelta *= 0.1;
 
 		if (g_gameMode == ModeInGame)
 		{
@@ -191,6 +200,14 @@ void App::MainLoop()
 			// Have we finished the level?
 			if (g_maze.isComplete())
 				g_fixedFont.DrawText(200, 200, DEF_FONT_SIZE, "// Finished //");
+
+			//Are any debug features on?
+			if (g_godMode != 0)
+				g_fixedFont.DrawText(150, 25, DEF_FONT_SIZE, "GOD MODE");
+			if (g_debugMode != 0)
+				g_fixedFont.DrawText(300, 25, DEF_FONT_SIZE, "DEBUG MODE");
+			if (g_slowmo != 0)
+				g_fixedFont.DrawText(475, 25, DEF_FONT_SIZE, "MATRIX MODE");
 		}
 		else
 		{

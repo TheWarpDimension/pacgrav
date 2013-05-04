@@ -271,6 +271,7 @@ void Ghost::Advance(float timeDelta)
 		{
 		case GhostModeNormal:
 		case GhostModeScatter:
+			if  (g_godMode != 1)
 			g_gameMode = ModePcmanDying;
 			break;
 		case GhostModeRunAway:

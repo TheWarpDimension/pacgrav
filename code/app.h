@@ -33,6 +33,7 @@ extern double	g_scatterEndTime;
 #define numGhosts 4
 extern Ghost	g_ghosts[numGhosts];
 extern bool     g_debugMode;
-
+extern bool     g_godMode;
+extern bool     g_slowmo;
 
 #endif
