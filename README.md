@@ -1,5 +1,8 @@
 Pac-Man with gravity, but that's not implemented yet.
 
+TO COMPILE:
+Open "pcman.sln", wait till it's all loaded and press "[F5]"
+
 KEYS:
 [W/UP ARROW] = GO UP
 [S/DOWN ARROW] = GO DOWN
