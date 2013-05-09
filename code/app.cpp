@@ -39,6 +39,7 @@ Ghost		g_ghosts[numGhosts];
 bool		g_debugMode = false;
 bool		g_godMode = false;
 bool		g_slowmo = false;
+bool		g_paused = false;
 
 
 App::App()
@@ -85,8 +86,15 @@ void App::MainLoop()
 		if (g_keyDowns[KEY_F5])
 			g_slowmo = !g_slowmo;
 
+		if (g_keyDowns[KEY_P])
+			g_paused = !g_paused;
+
 		if (g_slowmo != 0)
 			timeDelta *= 0.1;
+
+		if (g_paused != 0)
+			timeDelta *= 0.0;
+
 
 		if (g_gameMode == ModeInGame)
 		{
@@ -201,6 +209,8 @@ void App::MainLoop()
 			if (g_maze.isComplete())
 				g_fixedFont.DrawText(200, 200, DEF_FONT_SIZE, "// Finished //");
 
+			//Pause code
+
 			//Are any debug features on?
 			if (g_godMode != 0)
 				g_fixedFont.DrawText(150, 25, DEF_FONT_SIZE, "GOD MODE");
@@ -208,6 +218,8 @@ void App::MainLoop()
 				g_fixedFont.DrawText(300, 25, DEF_FONT_SIZE, "DEBUG MODE");
 			if (g_slowmo != 0)
 				g_fixedFont.DrawText(475, 25, DEF_FONT_SIZE, "MATRIX MODE");
+			if (g_paused != 0)
+				g_fixedFont.DrawText(342.5, 345, DEF_FONT_SIZE, "PAUSED");
 		}
 		else
 		{
