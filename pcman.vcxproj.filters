@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="code\app.cpp" />
+    <ClCompile Include="code\creature.cpp" />
+    <ClCompile Include="code\ghost.cpp" />
+    <ClCompile Include="code\maze.cpp" />
+    <ClCompile Include="code\pcman.cpp" />
+    <ClCompile Include="code\lib\drawing_primitives_gdi.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\drawing_primitives_opengl.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\file_update_watcher.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\filesys_utils.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\hi_res_time.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\input.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\math_utils.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\dir_walker.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\debug_utils.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\buffered_file_reader.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\bitmap.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\binary_stream_readers.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\png.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\rgb_colour.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\sound_library_2d.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\sound\sound_stream_decoder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\sound\sound_system.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\system_info.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\string_utils.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\text_renderer_ogl.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\text_stream_readers.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\tga.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\threading.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\universal_include.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\message_dialog.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\fps_meter.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\resource_manager.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\window_manager_gdi.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\window_manager_opengl.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\vertical_sync.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\sprite.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="code\lib\profiler.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="code\app.h" />
+    <ClInclude Include="code\creature.h" />
+    <ClInclude Include="code\ghost.h" />
+    <ClInclude Include="code\maze.h" />
+    <ClInclude Include="code\pcman.h" />
+    <ClInclude Include="code\lib\drawing_primitives.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\file_update_watcher.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\filesys_utils.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\hash_table.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\hi_res_time.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\input.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\key_tree.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\llist.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\math_utils.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\dir_walker.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\debug_utils.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\darray.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\buffered_file_reader.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\bitmap.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\binary_stream_readers.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\png.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\rgb_colour.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\sound_library_2d.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\sound\sound_stream_decoder.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\sound\sound_system.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\system_info.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\string_utils.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\text_renderer_ogl.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\text_stream_readers.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\tga.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\threading.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\universal_include.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\message_dialog.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\fps_meter.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\resource_manager.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\sorting_hash_table.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\window_manager.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\window_manager_gdi.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\window_manager_opengl.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\vertical_sync.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\text_renderer.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\sprite.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="code\lib\profiler.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="lib">
+      <UniqueIdentifier>{df036e64-47c4-4f36-9f7a-864c9d54e487}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

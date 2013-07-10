@@ -34,7 +34,7 @@ SoundStreamDecoder::SoundStreamDecoder(BinaryReader *_in)
 	}
 	else
 	{
-		//DarwiniaReleaseAssert(0, "Unknown sound file format %s", m_in->m_filename);
+		ReleaseAssert(0, "Unknown sound file format %s", m_in->m_filename);
 	}
 }
 
@@ -166,12 +166,12 @@ void SoundStreamDecoder::ReadOggHeader()
 
 	m_vorbisFile = new OggVorbis_File;
 	int result = ov_open_callbacks(m_in, m_vorbisFile, NULL, 0, callbacks);
-//	DarwiniaReleaseAssert(result == 0, "Ogg file corrupt %s (result = %d)", m_in->m_filename, result);
+	ReleaseAssert(result == 0, "Ogg file corrupt %s (result = %d)", m_in->m_filename, result);
 
 	vorbis_info *vi = ov_info(m_vorbisFile, -1);
 
 	m_numSamples = ov_pcm_total(m_vorbisFile, -1);
-//	DarwiniaReleaseAssert(m_numSamples > 0, "Ogg file contains no data %s", m_in->m_filename);
+	ReleaseAssert(m_numSamples > 0, "Ogg file contains no data %s", m_in->m_filename);
 	m_freq = vi->rate;
 	m_numChannels = vi->channels;
 }
@@ -239,8 +239,8 @@ unsigned int SoundStreamDecoder::ReadOggData(signed short *_data, unsigned int _
 		int numBytesToRead = samplesLeftToRead * 2;
 		int bytesRead = ov_read(m_vorbisFile, buf, numBytesToRead, IS_BIG_ENDIAN,
 								2 /*16 bit*/, 1 /*signed*/, &currentSection);
-//		DarwiniaReleaseAssert(bytesRead != OV_HOLE && bytesRead != OV_EBADLINK,
-//			"Ogg file corrupt %s", m_in->m_filename);
+		ReleaseAssert(bytesRead != OV_HOLE && bytesRead != OV_EBADLINK,
+			"Ogg file corrupt %s", m_in->m_filename);
 
 		if (bytesRead == 0)
 		{
@@ -262,14 +262,14 @@ unsigned int SoundStreamDecoder::Read(signed short *_data, unsigned int _numSamp
 	switch( m_fileType )
 	{
 	case TypeUnknown:
-//		DarwiniaReleaseAssert(0, "Unknown format of sound file %s", m_in->m_filename);
+		ReleaseAssert(0, "Unknown format of sound file %s", m_in->m_filename);
 	case TypeWav:
 		return ReadWavData(_data, _numSamples);
 	case TypeOgg:
 		return ReadOggData(_data, _numSamples);
 	}
 
-//	DarwiniaDebugAssert(0);
+	DebugAssert(0);
 	return 0;
 }
 

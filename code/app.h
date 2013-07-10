@@ -16,6 +16,7 @@ public:
 
 typedef enum
 {
+	ModeMainMenu,
 	ModeInGame,
 	ModePcmanDying,
 	ModeGameOverScreen

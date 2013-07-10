@@ -224,10 +224,9 @@ void App::MainLoop()
 		else
 		{
 			g_gameOverSprite.Render(0, 0, Sprite::ModeNormal, 760, 690);
-		//	g_soundSystem.PlayOnce("sounds/GameOverYeah.ogg");
+			g_soundSystem.PlayOnce("sounds/Game Over Yeah.wav");
+						//	g_soundSystem.PlayOnce("sounds/Game Over Yeah.ogg");
 		}
-        
-        g_soundSystem.Advance();
 
 		// Flip and sleep //
 		

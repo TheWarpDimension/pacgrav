@@ -68,6 +68,7 @@ bool Sprite::Load(char const *filename, int rotateAmount)
 }
 
 
+#define GL_CLAMP_TO_EDGE 0x812F
 void Sprite::Render(int x, int y, Mode mode, int w, int h)
 {
 	if (m_textureId == 456456)
@@ -104,8 +105,8 @@ void Sprite::Render(int x, int y, Mode mode, int w, int h)
 	glEnable(GL_TEXTURE_2D);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_ONE_MINUS_SRC_ALPHA, GL_SRC_ALPHA);

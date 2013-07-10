@@ -12,7 +12,7 @@ void PcMan::Init(double x, double y)
     Creature::Init(x, y, CreatureTypePcMan);
 
     m_speed = 4.25;
-	m_numLives = 3;
+	m_numLives = 0;
 
 	m_sprite[0].Load("bitmaps/pcman0.png", 0);
 	m_sprite[1].Load("bitmaps/pcman1.png", 0);
