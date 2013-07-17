@@ -40,6 +40,7 @@ bool		g_debugMode = false;
 bool		g_godMode = false;
 bool		g_slowmo = false;
 bool		g_paused = false;
+bool		g_killMode = false;
 
 
 App::App()
@@ -88,9 +89,15 @@ void App::MainLoop()
 
 		if (g_keyDowns[KEY_P])
 			g_paused = !g_paused;
+		
+		if (g_keyDowns[KEY_CONTROL, KEY_K])
+			g_killMode = !g_killMode;
 
 		if (g_slowmo != 0)
 			timeDelta *= 0.1;
+
+		if (g_killMode != 0)
+			g_gameMode = ModePcmanDying;
 
 		if (g_paused != 0)
 			timeDelta *= 0.0;
@@ -220,6 +227,8 @@ void App::MainLoop()
 				g_fixedFont.DrawText(475, 25, DEF_FONT_SIZE, "MATRIX MODE");
 			if (g_paused != 0)
 				g_fixedFont.DrawText(342.5, 345, DEF_FONT_SIZE, "PAUSED");
+			if (g_killMode != 0)
+				g_fixedFont.DrawText(0, 345, DEF_FONT_SIZE, "YOU SHOULD BE DEAD NOW");
 		}
 		else
 		{
