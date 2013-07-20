@@ -1,7 +1,11 @@
 #include "lib/universal_include.h"
 
 #include <math.h>
+#include <conio.h>
+#include <Windows.h>
 #include <stdio.h>
+#include "C:/Program Files (x86)/FMOD SoundSystem/FMOD Programmers API Windows/api/inc/fmod.hpp"
+#include "C:/Program Files (x86)/FMOD SoundSystem/FMOD Programmers API Windows/api/inc/fmod_errors.h"
 
 #include "lib/binary_stream_readers.h"
 #include "lib/debug_utils.h"
@@ -20,7 +24,6 @@
 #include "ghost.h"
 #include "maze.h"
 #include "pcman.h"
-
 
 App         *g_app = NULL;
 double      g_advanceTime;
@@ -42,6 +45,17 @@ bool		g_slowmo = false;
 bool		g_paused = false;
 bool		g_killMode = false;
 
+//ERROR CODE START
+void ERRCHECK(FMOD_RESULT result)
+{
+    if (result != FMOD_OK)
+    {
+		ReleaseAssert( false, "FMOD_MANAGER SAYS - FMOD HAS CRASHED, BLAME BONCEY'S FMOD CODE.");
+    }
+}
+//ERROR CODE END
+
+//FMOD CODE
 
 App::App()
 {
@@ -50,6 +64,38 @@ App::App()
 
 void App::MainLoop()
 {
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////
+	FMOD::System     *system;
+    FMOD::Sound      *sound1, *sound2, *sound3;
+    FMOD::Channel    *channel = 0;
+    FMOD_RESULT       result;
+    int               key;
+    unsigned int      version;
+
+    /*
+        Create a System object and initialize.
+    */
+    result = FMOD::System_Create(&system);
+    ERRCHECK(result);
+
+    result = system->getVersion(&version);
+    ERRCHECK(result);
+
+    if (version < FMOD_VERSION)
+    {
+        ReleaseAssert( false, "OUTDATED FMOD_MANAGER SAYS - FMOD IS OUTDATED. OR NEEDS TO BE UPDATED IN OUR CODE...");
+    }
+
+    result = system->init(32, FMOD_INIT_NORMAL, 0);
+    ERRCHECK(result);
+	/// PUT SOUNDS AFTER ME!
+	result = system->createSound("../sounds/goy.wav", FMOD_HARDWARE, 0, &sound1);
+    ERRCHECK(result);
+	
+	result = sound1->setMode(FMOD_LOOP_OFF);
+    ERRCHECK(result);
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     g_gameOverSprite.Load("bitmaps/GameOver.png", 0);
 	g_mazeBlockSprite.Load("bitmaps/Block.png", 0);
 	g_mazePillSprite.Load("bitmaps/Pill.png", 0);
@@ -92,6 +138,9 @@ void App::MainLoop()
 		
 		if (g_keyDowns[KEY_CONTROL, KEY_K])
 			g_killMode = !g_killMode;
+//SOUNDTEST
+		if (g_keyDowns[KEY_CONTROL, KEY_T])
+			result = system->playSound(FMOD_CHANNEL_FREE, sound1, false, &channel);
 
 		if (g_slowmo != 0)
 			timeDelta *= 0.1;

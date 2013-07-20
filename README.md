@@ -1,7 +1,9 @@
+Welcome to the beta branch, stuff he most likely won't work.
+
 Pac-Man with gravity, but that's not implemented yet.
 
 TO COMPILE:
-Open "pcman.sln", wait till it's all loaded and press "[F5]"
+Open "pcman.vcxproj", wait till it's all loaded and press "[F5]"
 
 KEYS:
 [W/UP ARROW] = GO UP
