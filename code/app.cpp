@@ -96,6 +96,16 @@ void App::MainLoop()
 
 	result = system->createSound("sounds/Title.wav", FMOD_HARDWARE, 0, &title);
     ERRCHECK(result);
+    
+	result = spawn->setMode(FMOD_LOOP_OFF);
+    ERRCHECK(result);  
+	
+	result = gameover->setMode(FMOD_LOOP_OFF);
+    ERRCHECK(result);  
+	
+	result = title->setMode(FMOD_LOOP_OFF);
+    ERRCHECK(result);  
+
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     result = system->playSound(FMOD_CHANNEL_FREE, spawn, false, &channel);
@@ -144,10 +154,7 @@ void App::MainLoop()
 		}
 
 		if (g_keyDowns[KEY_P])
-		{
-			if (g_debugMode == true)
 			g_paused = !g_paused;
-		}
 		
 		if (g_keyDowns[KEY_CONTROL, KEY_K])
 		{
@@ -164,6 +171,7 @@ void App::MainLoop()
 			result = system->playSound(FMOD_CHANNEL_FREE, gameover, false, &channel);
 			ERRCHECK(result);
 			result = system->playSound(FMOD_CHANNEL_FREE, title, false, &channel);
+			ERRCHECK(result);
 			}
 		}
 
@@ -288,7 +296,7 @@ void App::MainLoop()
 			
 			// Have we finished the level?
 			if (g_maze.isComplete())
-				g_fixedFont.DrawText(200, 200, DEF_FONT_SIZE, "// Finished //");
+				g_fixedFont.DrawText(200, 200, DEF_FONT_SIZE, "COMPLETED");
 
 			//Pause code
 
@@ -306,6 +314,12 @@ void App::MainLoop()
 		{
 			g_gameOverSprite.Render(0, 0, Sprite::ModeNormal, 760, 690);
 		}
+		if (g_gameMode == ModeGameOverScreen)
+		{
+			result = system->playSound(FMOD_CHANNEL_FREE, gameover, false, &channel);
+			ERRCHECK(result);
+		}
+			//if (g_gameMode == ModeInGame
 
 		// Flip and sleep //
 		
