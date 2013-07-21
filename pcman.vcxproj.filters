@@ -48,15 +48,6 @@
     <ClCompile Include="code\lib\rgb_colour.cpp">
       <Filter>lib</Filter>
     </ClCompile>
-    <ClCompile Include="code\lib\sound_library_2d.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="code\sound\sound_stream_decoder.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
-    <ClCompile Include="code\sound\sound_system.cpp">
-      <Filter>lib</Filter>
-    </ClCompile>
     <ClCompile Include="code\lib\system_info.cpp">
       <Filter>lib</Filter>
     </ClCompile>
@@ -158,15 +149,6 @@
       <Filter>lib</Filter>
     </ClInclude>
     <ClInclude Include="code\lib\rgb_colour.h">
-      <Filter>lib</Filter>
-    </ClInclude>
-    <ClInclude Include="code\lib\sound_library_2d.h">
-      <Filter>lib</Filter>
-    </ClInclude>
-    <ClInclude Include="code\sound\sound_stream_decoder.h">
-      <Filter>lib</Filter>
-    </ClInclude>
-    <ClInclude Include="code\sound\sound_system.h">
       <Filter>lib</Filter>
     </ClInclude>
     <ClInclude Include="code\lib\system_info.h">

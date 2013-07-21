@@ -37,6 +37,7 @@ extern bool     g_debugMode;
 extern bool     g_godMode;
 extern bool     g_slowmo;
 extern bool		g_paused;
+extern bool		g_killPCMAN;
 
 
 #endif

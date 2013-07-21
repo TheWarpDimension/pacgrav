@@ -15,10 +15,8 @@
 #include "lib/rgb_colour.h"
 #include "lib/text_renderer.h"
 #include "lib/sprite.h"
-#include "sound/sound_system.h"
 #include "lib/window_manager.h"
 
-#include "sound/sound_stream_decoder.h"
 
 #include "app.h"
 #include "ghost.h"
@@ -43,19 +41,16 @@ bool		g_debugMode = false;
 bool		g_godMode = false;
 bool		g_slowmo = false;
 bool		g_paused = false;
-bool		g_killMode = false;
 
 //ERROR CODE START
 void ERRCHECK(FMOD_RESULT result)
 {
     if (result != FMOD_OK)
     {
-		ReleaseAssert( false, "FMOD_MANAGER SAYS - FMOD HAS CRASHED, BLAME BONCEY'S FMOD CODE.");
+		ReleaseAssert( false, "FMOD_MANAGER SAYS - FMOD HAS CRASHED, YOU BLAME BONCEY'S FMOD CODE OR YOU CAN BLAME YOURSELF IF YOU PUT A SOUND IN WRONG OR SOMETHING.");
     }
 }
 //ERROR CODE END
-
-//FMOD CODE
 
 App::App()
 {
@@ -64,14 +59,18 @@ App::App()
 
 void App::MainLoop()
 {
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////
-	FMOD::System     *system;
-    FMOD::Sound      *sound1, *sound2, *sound3;
-    FMOD::Channel    *channel = 0;
-    FMOD_RESULT       result;
-    int               key;
-    unsigned int      version;
-
+	////////////////////////////////////////////////
+	//FMOD CODE DERIVED FROM BONCEY'S FMOD_MANAGER//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	FMOD::System *system;																					//
+	FMOD_SPEAKERMODE speakerMode;																			//
+	FMOD_CAPS caps;																							//
+    FMOD::Sound      *spawn, *gameover, *title;																//
+    FMOD::Channel    *channel = 0;																			//
+    FMOD_RESULT       result;																				//
+    int               key;																					//
+    unsigned int      version;																				//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /*
         Create a System object and initialize.
     */
@@ -79,7 +78,7 @@ void App::MainLoop()
     ERRCHECK(result);
 
     result = system->getVersion(&version);
-    ERRCHECK(result);
+	ERRCHECK(result);
 
     if (version < FMOD_VERSION)
     {
@@ -89,14 +88,19 @@ void App::MainLoop()
     result = system->init(32, FMOD_INIT_NORMAL, 0);
     ERRCHECK(result);
 	/// PUT SOUNDS AFTER ME!
-	result = system->createSound("../sounds/goy.wav", FMOD_HARDWARE, 0, &sound1);
+	result = system->createSound("sounds/Spawn.wav", FMOD_HARDWARE, 0, &spawn);
     ERRCHECK(result);
-	
-	result = sound1->setMode(FMOD_LOOP_OFF);
+
+	result = system->createSound("sounds/GOY.wav", FMOD_HARDWARE, 0, &gameover);
+    ERRCHECK(result);
+
+	result = system->createSound("sounds/Title.wav", FMOD_HARDWARE, 0, &title);
     ERRCHECK(result);
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    g_gameOverSprite.Load("bitmaps/GameOver.png", 0);
+    result = system->playSound(FMOD_CHANNEL_FREE, spawn, false, &channel);
+	ERRCHECK(result);
+	g_gameOverSprite.Load("bitmaps/GameOver.png", 0);
 	g_mazeBlockSprite.Load("bitmaps/Block.png", 0);
 	g_mazePillSprite.Load("bitmaps/Pill.png", 0);
 	g_mazeCherrySprite.Load("bitmaps/Cherry.png", 0);
@@ -137,16 +141,19 @@ void App::MainLoop()
 			g_paused = !g_paused;
 		
 		if (g_keyDowns[KEY_CONTROL, KEY_K])
-			g_killMode = !g_killMode;
+			g_gameMode = ModePcmanDying;
 //SOUNDTEST
 		if (g_keyDowns[KEY_CONTROL, KEY_T])
-			result = system->playSound(FMOD_CHANNEL_FREE, sound1, false, &channel);
+		{
+			result = system->playSound(FMOD_CHANNEL_FREE, spawn, false, &channel);
+			ERRCHECK(result);
+			result = system->playSound(FMOD_CHANNEL_FREE, gameover, false, &channel);
+			ERRCHECK(result);
+			result = system->playSound(FMOD_CHANNEL_FREE, title, false, &channel);
+		}
 
 		if (g_slowmo != 0)
 			timeDelta *= 0.1;
-
-		if (g_killMode != 0)
-			g_gameMode = ModePcmanDying;
 
 		if (g_paused != 0)
 			timeDelta *= 0.0;
@@ -230,10 +237,13 @@ void App::MainLoop()
  					}
 				} 
 			}
+			// Play get you ghosts sound
 
 			// Render the NPCs
 			if (g_gameMode == ModeInGame || g_gameMode == ModePcmanDying)
+			{
 				g_pcman.Render();
+			}
 
 			if (g_gameMode == ModeInGame)
 			{
@@ -276,14 +286,10 @@ void App::MainLoop()
 				g_fixedFont.DrawText(475, 25, DEF_FONT_SIZE, "MATRIX MODE");
 			if (g_paused != 0)
 				g_fixedFont.DrawText(342.5, 345, DEF_FONT_SIZE, "PAUSED");
-			if (g_killMode != 0)
-				g_fixedFont.DrawText(0, 345, DEF_FONT_SIZE, "YOU SHOULD BE DEAD NOW");
 		}
 		else
 		{
 			g_gameOverSprite.Render(0, 0, Sprite::ModeNormal, 760, 690);
-			g_soundSystem.PlayOnce("sounds/Game Over Yeah.wav");
-						//	g_soundSystem.PlayOnce("sounds/Game Over Yeah.ogg");
 		}
 
 		// Flip and sleep //
