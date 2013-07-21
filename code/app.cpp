@@ -132,24 +132,39 @@ void App::MainLoop()
 			g_debugMode = !g_debugMode;
 
 		if (g_keyDowns[KEY_F3])
+		{
+			if (g_debugMode == true)
 			g_godMode = !g_godMode;
+		}
 
 		if (g_keyDowns[KEY_F5])
+		{
+			if (g_debugMode == true)
 			g_slowmo = !g_slowmo;
+		}
 
 		if (g_keyDowns[KEY_P])
+		{
+			if (g_debugMode == true)
 			g_paused = !g_paused;
+		}
 		
 		if (g_keyDowns[KEY_CONTROL, KEY_K])
+		{
+			if (g_debugMode == true)
 			g_gameMode = ModePcmanDying;
+		}
 //SOUNDTEST
 		if (g_keyDowns[KEY_CONTROL, KEY_T])
 		{
+			if (g_debugMode == true)
+			{
 			result = system->playSound(FMOD_CHANNEL_FREE, spawn, false, &channel);
 			ERRCHECK(result);
 			result = system->playSound(FMOD_CHANNEL_FREE, gameover, false, &channel);
 			ERRCHECK(result);
 			result = system->playSound(FMOD_CHANNEL_FREE, title, false, &channel);
+			}
 		}
 
 		if (g_slowmo != 0)

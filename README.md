@@ -14,7 +14,10 @@ KEYS:
 * [P] = PAUSE
 
 DEBUG KEYS:
+* [F4] = DEBUG MODE
 * [F3] = GOD MODE
-* [F4] = GHOST PATH DEBUG MODE
 * [F5] = MATRIX MODE
 * [CONTROL + K] = KILL PC-MAN
+* [CONTROL + T] = SOUND TEST
+
+#### You need to have debug mode enabled to use any other debug keys!!!
