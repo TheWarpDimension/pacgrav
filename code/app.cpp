@@ -45,10 +45,10 @@ bool		g_paused = false;
 //ERROR CODE START
 void ERRCHECK(FMOD_RESULT result)
 {
-    if (result != FMOD_OK)
-    {
+	if (result != FMOD_OK)
+	{
 		ReleaseAssert( false, "FMOD_MANAGER SAYS - FMOD HAS CRASHED, YOU BLAME BONCEY'S FMOD CODE OR YOU CAN BLAME YOURSELF IF YOU PUT A SOUND IN WRONG OR SOMETHING.");
-    }
+	}
 }
 //ERROR CODE END
 
@@ -61,54 +61,54 @@ void App::MainLoop()
 {
 	////////////////////////////////////////////////
 	//FMOD CODE DERIVED FROM BONCEY'S FMOD_MANAGER//
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	FMOD::System *system;																					//
 	FMOD_SPEAKERMODE speakerMode;																			//
 	FMOD_CAPS caps;																							//
-    FMOD::Sound      *spawn, *gameover, *title;																//
-    FMOD::Channel    *channel = 0;																			//
-    FMOD_RESULT       result;																				//
-    int               key;																					//
-    unsigned int      version;																				//
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /*
-        Create a System object and initialize.
-    */
-    result = FMOD::System_Create(&system);
-    ERRCHECK(result);
-
-    result = system->getVersion(&version);
+	FMOD::Sound      *spawn, *gameover, *title;																//
+	FMOD::Channel    *channel = 0;																			//
+	FMOD_RESULT       result;																				//
+	int               key;																					//
+	unsigned int      version;																				//
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/*
+	Create a System object and initialize.
+	*/
+	result = FMOD::System_Create(&system);
 	ERRCHECK(result);
 
-    if (version < FMOD_VERSION)
-    {
-        ReleaseAssert( false, "OUTDATED FMOD_MANAGER SAYS - FMOD IS OUTDATED. OR NEEDS TO BE UPDATED IN OUR CODE...");
-    }
+	result = system->getVersion(&version);
+	ERRCHECK(result);
 
-    result = system->init(32, FMOD_INIT_NORMAL, 0);
-    ERRCHECK(result);
+	if (version < FMOD_VERSION)
+	{
+		ReleaseAssert( false, "OUTDATED FMOD_MANAGER SAYS - FMOD IS OUTDATED. OR NEEDS TO BE UPDATED IN OUR CODE...");
+	}
+
+	result = system->init(32, FMOD_INIT_NORMAL, 0);
+	ERRCHECK(result);
 	/// PUT SOUNDS AFTER ME!
 	result = system->createSound("sounds/Spawn.wav", FMOD_HARDWARE, 0, &spawn);
-    ERRCHECK(result);
+	ERRCHECK(result);
 
 	result = system->createSound("sounds/GOY.wav", FMOD_HARDWARE, 0, &gameover);
-    ERRCHECK(result);
+	ERRCHECK(result);
 
 	result = system->createSound("sounds/Title.wav", FMOD_HARDWARE, 0, &title);
-    ERRCHECK(result);
-    
+	ERRCHECK(result);
+
 	result = spawn->setMode(FMOD_LOOP_OFF);
-    ERRCHECK(result);  
-	
+	ERRCHECK(result);  
+
 	result = gameover->setMode(FMOD_LOOP_OFF);
-    ERRCHECK(result);  
-	
+	ERRCHECK(result);  
+
 	result = title->setMode(FMOD_LOOP_OFF);
-    ERRCHECK(result);  
+	ERRCHECK(result);  
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    result = system->playSound(FMOD_CHANNEL_FREE, spawn, false, &channel);
+	result = system->playSound(FMOD_CHANNEL_FREE, spawn, false, &channel);
 	ERRCHECK(result);
 	g_gameOverSprite.Load("bitmaps/GameOver.png", 0);
 	g_mazeBlockSprite.Load("bitmaps/Block.png", 0);
@@ -134,8 +134,8 @@ void App::MainLoop()
 
 		double timeNow = GetHighResTime();
 		double timeDelta = timeNow - lastTime;
-        if (timeDelta > 0.2)
-            timeDelta = 0.2;
+		if (timeDelta > 0.2)
+			timeDelta = 0.2;
 		lastTime = timeNow;
 
 		if (g_keyDowns[KEY_F4])
@@ -144,34 +144,34 @@ void App::MainLoop()
 		if (g_keyDowns[KEY_F3])
 		{
 			if (g_debugMode == true)
-			g_godMode = !g_godMode;
+				g_godMode = !g_godMode;
 		}
 
 		if (g_keyDowns[KEY_F5])
 		{
 			if (g_debugMode == true)
-			g_slowmo = !g_slowmo;
+				g_slowmo = !g_slowmo;
 		}
 
 		if (g_keyDowns[KEY_P])
 			g_paused = !g_paused;
-		
+
 		if (g_keyDowns[KEY_CONTROL, KEY_K])
 		{
 			if (g_debugMode == true)
-			g_gameMode = ModePcmanDying;
+				g_gameMode = ModePcmanDying;
 		}
-//SOUNDTEST
+		//SOUNDTEST
 		if (g_keyDowns[KEY_CONTROL, KEY_T])
 		{
 			if (g_debugMode == true)
 			{
-			result = system->playSound(FMOD_CHANNEL_FREE, spawn, false, &channel);
-			ERRCHECK(result);
-			result = system->playSound(FMOD_CHANNEL_FREE, gameover, false, &channel);
-			ERRCHECK(result);
-			result = system->playSound(FMOD_CHANNEL_FREE, title, false, &channel);
-			ERRCHECK(result);
+				result = system->playSound(FMOD_CHANNEL_FREE, spawn, false, &channel);
+				ERRCHECK(result);
+				result = system->playSound(FMOD_CHANNEL_FREE, gameover, false, &channel);
+				ERRCHECK(result);
+				result = system->playSound(FMOD_CHANNEL_FREE, title, false, &channel);
+				ERRCHECK(result);
 			}
 		}
 
@@ -187,7 +187,7 @@ void App::MainLoop()
 			// ****************
 			// Advance the NPCs
 			// ****************
-			
+
 			// Set desired move for PC man
 			if (g_keys[KEY_RIGHT] || g_keys [KEY_D])
 				g_pcman.m_nextMove = MoveRight;
@@ -250,14 +250,14 @@ void App::MainLoop()
 					else if (g_maze.isCherry(x, y))
 					{
 						g_mazeCherrySprite.Render(tx - g_tileSize * 0.5, ty - g_tileSize * 0.5, 
-												  Sprite::ModeNormal, 
-												  g_tileSize * 1.32, g_tileSize * 1.32);
+							Sprite::ModeNormal, 
+							g_tileSize * 1.32, g_tileSize * 1.32);
 					}
 					else if (g_maze.isPowerPill(x, y))
 					{
 						if ((int)(GetHighResTime() * 2) & 1)
 							g_mazePowerpillSprite.Render(tx, ty, Sprite::ModeNormal);
- 					}
+					}
 				} 
 			}
 			// Play get you ghosts sound
@@ -273,27 +273,27 @@ void App::MainLoop()
 				g_ghosts[GhostCharacterRed].Render();
 				g_ghosts[GhostCharacterBlue].Render();
 				g_ghosts[GhostCharacterOrange].Render();
- 				g_ghosts[GhostCharacterPink].Render();
+				g_ghosts[GhostCharacterPink].Render();
 			}
-			
+
 			DrawFilledBox(g_maze.m_offsetX -1, g_maze.m_offsetY - 37+ g_tileSize * 13, g_tileSize, g_tileSize*2, 0, 0, 0);
 			DrawFilledBox(g_maze.m_offsetX +1 + g_tileSize * (g_maze.m_width - 1), g_maze.m_offsetY - 37 + g_tileSize * 13, g_tileSize, g_tileSize*2, 0, 0, 0);
 
 			// Draw score
 			//SetTextColour(RGBAColour(255,225,225));
 			if ((int)(GetHighResTime() * 2) & 1)
-    			g_fixedFont.DrawText(45, 7, DEF_FONT_SIZE, "1 UP");
+				g_fixedFont.DrawText(45, 7, DEF_FONT_SIZE, "1 UP");
 			char buf[10];
 			sprintf(buf, "%d", g_score);
 			g_fixedFont.DrawText(45, 27, DEF_FONT_SIZE, buf);
 
 			// Draw FPS meter
-//			g_fixedFont.DrawText();
+			//			g_fixedFont.DrawText();
 
 			// Draw pcman lives
 			for (int i = 0; i < g_pcman.m_numLives; i++)
 				g_pcman.m_sprite[0].Render(g_maze.m_offsetX + g_tileSize + i * 10, (g_maze.m_height + 2) * g_tileSize, Sprite::ModeNormal);
-			
+
 			// Have we finished the level?
 			if (g_maze.isComplete())
 				g_fixedFont.DrawText(200, 200, DEF_FONT_SIZE, "COMPLETED");
@@ -319,10 +319,10 @@ void App::MainLoop()
 			result = system->playSound(FMOD_CHANNEL_FREE, gameover, false, &channel);
 			ERRCHECK(result);
 		}
-			//if (g_gameMode == ModeInGame
+		//if (g_gameMode == ModeInGame
 
 		// Flip and sleep //
-		
+
 		g_windowManager->Flip();
 		SleepEx(1, true);
 	}
@@ -336,19 +336,19 @@ void AppMain()
 	// WindowManager	
 	g_windowManager = new WindowManager;
 	g_windowManager->CreateWin(100, 10, 760, 690, true);
-//	g_windowManager->CreateWin(100, 100, 1024, 768, false);
-//	ShowCursor(false);
+	//	g_windowManager->CreateWin(100, 100, 1024, 768, false);
+	//	ShowCursor(false);
 
-    // Sound System
+	// Sound System
 
 	// InputManager
 	g_inputManager = new InputManager;
-	
+
 	// Fonts
 	g_fixedFont.Initialise("bitmaps/speccy_font.png");
- 
+
 	g_maze.init();
-//	if (g_maze.isWall(x,y) == false)
+	//	if (g_maze.isWall(x,y) == false)
 
 	g_app->MainLoop();
 }
