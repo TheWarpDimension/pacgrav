@@ -1,6 +1,7 @@
 ![The Warp Dimension Logo](/bitmaps/logo.png)
-# Pac-Man with gravity
-## But that's not implemented yet
+# The PC-Man/Pac-Grav Project
+## Pac-Man with gravity
+### But that's not implemented yet
 
 TO COMPILE:
 Open "pcman.vcxproj", wait till it's all loaded and press "[F5]"
