@@ -20,4 +20,4 @@ DEBUG KEYS:
 * [CONTROL + K] = KILL PC-MAN
 * [CONTROL + T] = SOUND TEST
 
-#### You need to have debug mode enabled to use any other debug keys!!!
+#### You need to have debug mode enabled to use any other debug keys.
