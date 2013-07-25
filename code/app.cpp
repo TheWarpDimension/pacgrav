@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include "C:/Program Files (x86)/FMOD SoundSystem/FMOD Programmers API Windows/api/inc/fmod.hpp"
 #include "C:/Program Files (x86)/FMOD SoundSystem/FMOD Programmers API Windows/api/inc/fmod_errors.h"
-
+#include "lib/SDL/SDL.h"
 #include "lib/binary_stream_readers.h"
 #include "lib/debug_utils.h"
 #include "lib/drawing_primitives.h"
