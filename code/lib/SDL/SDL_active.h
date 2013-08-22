@@ -21,14 +21,15 @@
 */
 
 /**
- *  @file SDL_cpuinfo.h
- *  CPU feature detection for SDL
+ *  @file SDL_active.h
+ *  Include file for SDL application focus event handling 
  */
 
-#ifndef _SDL_cpuinfo_h
-#define _SDL_cpuinfo_h
+#ifndef _SDL_active_h
+#define _SDL_active_h
 
 #include "SDL_stdinc.h"
+#include "SDL_error.h"
 
 #include "begin_code.h"
 /* Set up for C function definitions, even when using C++ */
@@ -36,29 +37,22 @@
 extern "C" {
 #endif
 
-/** This function returns true if the CPU has the RDTSC instruction */
-extern DECLSPEC SDL_bool SDLCALL SDL_HasRDTSC(void);
+/** @name The available application states */
+/*@{*/
+#define SDL_APPMOUSEFOCUS	0x01		/**< The app has mouse coverage */
+#define SDL_APPINPUTFOCUS	0x02		/**< The app has input focus */
+#define SDL_APPACTIVE		0x04		/**< The application is active */
+/*@}*/
 
-/** This function returns true if the CPU has MMX features */
-extern DECLSPEC SDL_bool SDLCALL SDL_HasMMX(void);
+/* Function prototypes */
+/** 
+ * This function returns the current state of the application, which is a
+ * bitwise combination of SDL_APPMOUSEFOCUS, SDL_APPINPUTFOCUS, and
+ * SDL_APPACTIVE.  If SDL_APPACTIVE is set, then the user is able to
+ * see your application, otherwise it has been iconified or disabled.
+ */
+extern DECLSPEC Uint8 SDLCALL SDL_GetAppState(void);
 
-/** This function returns true if the CPU has MMX Ext. features */
-extern DECLSPEC SDL_bool SDLCALL SDL_HasMMXExt(void);
-
-/** This function returns true if the CPU has 3DNow features */
-extern DECLSPEC SDL_bool SDLCALL SDL_Has3DNow(void);
-
-/** This function returns true if the CPU has 3DNow! Ext. features */
-extern DECLSPEC SDL_bool SDLCALL SDL_Has3DNowExt(void);
-
-/** This function returns true if the CPU has SSE features */
-extern DECLSPEC SDL_bool SDLCALL SDL_HasSSE(void);
-
-/** This function returns true if the CPU has SSE2 features */
-extern DECLSPEC SDL_bool SDLCALL SDL_HasSSE2(void);
-
-/** This function returns true if the CPU has AltiVec features */
-extern DECLSPEC SDL_bool SDLCALL SDL_HasAltiVec(void);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus
@@ -66,4 +60,4 @@ extern DECLSPEC SDL_bool SDLCALL SDL_HasAltiVec(void);
 #endif
 #include "close_code.h"
 
-#endif /* _SDL_cpuinfo_h */
+#endif /* _SDL_active_h */

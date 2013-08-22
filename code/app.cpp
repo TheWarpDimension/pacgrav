@@ -42,6 +42,8 @@ bool		g_godMode = false;
 bool		g_slowmo = false;
 bool		g_paused = false;
 
+
+
 //ERROR CODE START
 void ERRCHECK(FMOD_RESULT result)
 {
@@ -50,19 +52,23 @@ void ERRCHECK(FMOD_RESULT result)
 		ReleaseAssert( false, "FMOD_MANAGER SAYS - FMOD HAS CRASHED, YOU BLAME BONCEY'S FMOD CODE OR YOU CAN BLAME YOURSELF IF YOU PUT A SOUND IN WRONG OR SOMETHING.");
 	}
 }
-//ERROR CODE END
-
-App::App()
-{
-}
 
 
-void App::MainLoop()
-{
+
+
+
+
+
+
+
+
+
+
+
 	////////////////////////////////////////////////
 	//FMOD CODE DERIVED FROM BONCEY'S FMOD_MANAGER//
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	FMOD::System *system;																					//
+	FMOD::System *bsystem;																					//
 	FMOD_SPEAKERMODE speakerMode;																			//
 	FMOD_CAPS caps;																							//
 	FMOD::Sound      *spawn, *gameover, *title;																//
@@ -74,27 +80,51 @@ void App::MainLoop()
 	/*
 	Create a System object and initialize.
 	*/
-	result = FMOD::System_Create(&system);
+	
+	void play(FMOD::Sound *s, FMOD::Channel *c) { FMOD_RESULT result = bsystem->playSound(FMOD_CHANNEL_FREE, s, false, &c); ERRCHECK(result); }
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ERROR CODE END
+
+App::App()
+{
+}
+
+
+void App::MainLoop()
+{
+
+	//
+	result = FMOD::System_Create(&bsystem);
 	ERRCHECK(result);
 
-	result = system->getVersion(&version);
+	result = bsystem->getVersion(&version);
 	ERRCHECK(result);
 
-	if (version < FMOD_VERSION)
-	{
-		ReleaseAssert( false, "OUTDATED FMOD_MANAGER SAYS - FMOD IS OUTDATED. OR NEEDS TO BE UPDATED IN OUR CODE...");
-	}
-
-	result = system->init(32, FMOD_INIT_NORMAL, 0);
+	result = bsystem->init(32, FMOD_INIT_NORMAL, 0);
 	ERRCHECK(result);
 	/// PUT SOUNDS AFTER ME!
-	result = system->createSound("sounds/Spawn.wav", FMOD_HARDWARE, 0, &spawn);
+	result = bsystem->createSound("sounds/Spawn.wav", FMOD_HARDWARE, 0, &spawn);
 	ERRCHECK(result);
 
-	result = system->createSound("sounds/GOY.wav", FMOD_HARDWARE, 0, &gameover);
+	result = bsystem->createSound("sounds/GOY.wav", FMOD_HARDWARE, 0, &gameover);
 	ERRCHECK(result);
 
-	result = system->createSound("sounds/Title.wav", FMOD_HARDWARE, 0, &title);
+	result = bsystem->createSound("sounds/Title.wav", FMOD_HARDWARE, 0, &title);
 	ERRCHECK(result);
 
 	result = spawn->setMode(FMOD_LOOP_OFF);
@@ -106,10 +136,8 @@ void App::MainLoop()
 	result = title->setMode(FMOD_LOOP_OFF);
 	ERRCHECK(result);  
 
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	result = system->playSound(FMOD_CHANNEL_FREE, spawn, false, &channel);
-	ERRCHECK(result);
+	///
+	play(spawn, channel);
 	g_gameOverSprite.Load("bitmaps/GameOver.png", 0);
 	g_mazeBlockSprite.Load("bitmaps/Block.png", 0);
 	g_mazePillSprite.Load("bitmaps/Pill.png", 0);
@@ -166,12 +194,9 @@ void App::MainLoop()
 		{
 			if (g_debugMode == true)
 			{
-				result = system->playSound(FMOD_CHANNEL_FREE, spawn, false, &channel);
-				ERRCHECK(result);
-				result = system->playSound(FMOD_CHANNEL_FREE, gameover, false, &channel);
-				ERRCHECK(result);
-				result = system->playSound(FMOD_CHANNEL_FREE, title, false, &channel);
-				ERRCHECK(result);
+				play(spawn, channel);
+				play(gameover,channel);
+				play(title, channel);
 			}
 		}
 
@@ -189,6 +214,8 @@ void App::MainLoop()
 			// ****************
 
 			// Set desired move for PC man
+
+
 			if (g_keys[KEY_RIGHT] || g_keys [KEY_D])
 				g_pcman.m_nextMove = MoveRight;
 			if (g_keys[KEY_LEFT] || g_keys [KEY_A])
@@ -316,7 +343,7 @@ void App::MainLoop()
 		}
 		if (g_gameMode == ModeGameOverScreen)
 		{
-			result = system->playSound(FMOD_CHANNEL_FREE, gameover, false, &channel);
+			result = bsystem->playSound(FMOD_CHANNEL_FREE, gameover, false, &channel);
 			ERRCHECK(result);
 		}
 		//if (g_gameMode == ModeInGame
